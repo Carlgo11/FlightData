@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>FlightData - Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/main.css"/>
+    <link rel="stylesheet" href="./css/register.css"/>
+    <link rel="icon" href="img/favicon.png" type="image/png"/>
+</head>
+<body>
+{% if error is defined %}
+<div class="alert alert-danger">
+    <div class="container">
+        <h4>{{ error }}</h4>
+    </div>
+</div>
+{% endif %}
+
+
+<div class="col-10 col-md-6 col-lg-3 shadow p-3 mb-5 login">
+    <h2 class="headline">Register</h2>
+
+    <div class="col-12 col-lg-10 offset-lg-1 ">
+        <form class="form" action="" method="POST" id="login-form" autocomplete="on">
+
+            <input name="username" id="username" class="form-control" type="text" placeholder="Username"
+                   autocomplete="username" required>
+
+            <input id="password" name="password" class="form-control" type="password" placeholder="Password"
+                   autocomplete="new-password" required>
+
+            <input id="firstname" name="firstname" class="form-control" type="text" placeholder="First name"
+                   autocomplete="given-name" required>
+
+            <input id="lastname" name="lastname" class="form-control" type="text" placeholder="Last name"
+                   autocomplete="family-name" required>
+
+            <input id="email" name="email" class="form-control" type="email" placeholder="Email address"
+                   autocomplete="email" required>
+
+            <input class="btn btn-login " type="submit" value="Register">
+
+            <p id="login-option">or <a href="./login.php">log in</a>.</p>
+        </form>
+    </div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</body>
+</html>

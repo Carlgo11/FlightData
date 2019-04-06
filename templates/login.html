@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>FlightData - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/main.css"/>
+    <link rel="stylesheet" href="./css/login.css"/>
+    <link rel="icon" href="img/favicon.png" type="image/png"/>
+</head>
+<body>
+{% if not error is empty %}
+<div class="alert alert-danger">
+    <div class="container">
+        <h4>{{ error }}</h4>
+    </div>
+</div>
+{% endif %}
+
+<div class="col-10 col-md-3 shadow p-3 mb-5 login">
+    <h2 class="headline">Login</h2>
+
+    <div class="col-12 col-md-8 offset-md-2 ">
+        <form class="form" action="" method="POST" id="login-form">
+            <input name="username" class="form-control" type="text" placeholder="Username" required>
+            <input name="password" class="form-control" type="password" placeholder="Password" required>
+            <input class="btn btn-login " type="submit" value="Login">
+            <p id="login-option">or <a href="./register.php">create an account</a>.</p>
+        </form>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</body>

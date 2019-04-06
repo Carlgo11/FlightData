@@ -1,0 +1,53 @@
+﻿#departures {
+    text-align: center;
+    margin-top: 5%;
+}
+
+#arrivals {
+    text-align: center;
+    margin-top: 5%;
+}
+
+#headline {
+    width: 100%;
+    margin-top: 10%;
+}
+
+.text-secondary {
+    width: 100%;
+    padding-left: 20px;
+}
+
+.main {
+    width: 100%;
+    margin-top: 5%;
+    padding: 10px;
+    background-color: #eee;
+}
+
+.navbar {
+    margin-bottom: 5%;
+    height: 55px;
+}
+
+#class-table {
+    margin-top: 20px;
+}
+
+#search-form {
+    margin-top: 50px;
+}
+
+#search-btn {
+    margin-top: 20px;
+}
+
+.centered {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: 0px !important;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}

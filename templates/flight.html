@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlightData - {{ flight_ICAO }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/main.css"/>
+    <link rel="icon" href="img/favicon.png" type="image/png"/>
+</head>
+<body>
+<div class="container">
+    {{ include('header.html') }}
+    <div>
+        <h1 id="headline" class="display-4">{{ flight_ICAO }}</h1>
+    </div>
+    <div class="main shadow">
+        <div class="row">
+            <div class="col-sm"><b>IATA code: </b> {{ flight_IATA }}</div>
+            <div class="col-sm"><b>Airline:</b> <a href="airline.php?icao={{ airline_icao }}">{{ airline_icao }}</a></div>
+        </div>
+        <div class="row">
+            <div class="col-sm"><b>Tail number:</b> <a href="aircraft.php?reg_number={{ aircraft_tail }}">{{ aircraft_tail }}</a></div>
+            <div class="col-sm"><b>Aircraft model:</b> {{ aircraft_type }}</div>
+        </div>
+        <div class="row">
+            <div class="col-sm"><b>Departure airport:</b> <a href="./airport.php?airport={{ departure_airport }}">{{ departure_airport }}</a></div>
+            <div class="col-sm"><b>Arrival airport:</b> <a href="./airport.php?airport={{ arrival_airport }}">{{ arrival_airport }}</a></div>
+            <div class="col-sm"><b>Status:</b> {{ flight_status }}</div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script>
+</body>

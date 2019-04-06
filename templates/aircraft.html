@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlightData - {% if aircraft is defined %}{{ aircraft.tail_number }}{% else %}Aircraft{% endif %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="./css/main.css"/>
+    <link rel="icon" href="img/favicon.png" type="image/png"/>
+</head>
+<body>
+<div class="container">
+
+    {{ include('header.html') }}
+
+    {% if aircraft is not defined %}
+    <!-- No aircraft defined  -->
+    <div class="main col-lg-3 centered">
+        {% if error is defined %}
+        <div class="alert alert-warning">
+            <h2>Error</h2>
+            <h4>{{ error }}</h4>
+        </div>
+        {% endif %}
+        <form action="" method="GET" class="col-lg-10 offset-lg-1">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <label for="reg_number" class="input-group-text">Aircraft tail number:</label>
+                </div>
+                <input class="form-control" type="text" name="reg_number" id="reg_number" placeholder="OY-KBD" minlength="4" required>
+            </div>
+
+            <input type="submit" value="Search" class="btn btn-success col-md-3" style="margin-top: 10px">
+
+        </form>
+    </div>
+
+    {% else %}
+
+    <div>
+        <h1 id="headline" class="display-4">{{aircraft.tail_number}}</h1>
+    </div>
+
+    <div class="main shadow">
+
+        <div class="row">
+            <div class="col-sm"><b>Model:</b> {{ aircraft.name|default('Unknown') }} <i>({{
+                aircraft.model|default('N/A') }})</i></div>
+            <div class="col-sm"><b>Type:</b> {{ aircraft.type|capitalize|default('N/A') }} Aircraft</div>
+            <div class="col-sm"><b>Owner:</b> {{ aircraft.owner|default('Unknown') }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm"><b>Airline:</b> <a href="airline.php?icao={{ airline.icao }}">{{ airline.name|default('Unknown') }}</a></div>
+            <div class="col-sm"><b>Age:</b> {{ aircraft.age|default('0') }} years</div>
+            <div class="col-sm"><b>First flight:</b> {{ aircraft.first_flight|default('Unknown') }}</div>
+        </div>
+
+        {% if classes is empty %}
+
+        <!-- No classes can be found -->
+        <div class="row">
+            <div class="col-sm"><b>Classes:</b> N/A</div>
+        </div>
+
+        {% else %}
+
+        <!-- Classes found -->
+        <table class="table table-hover" id="class-table">
+            <thead>
+            <th scope="col">Class</th>
+            <th scope="col">Seats</th>
+            <th scope="col">Seat type</th>
+            <th scope="col">Legroom</th>
+            </thead>
+            <tbody>
+
+            {% for class in classes %}
+
+            <tr>
+                <td>{{ class.name|default('N/A') }}</td>
+                <td>{{ class.seats|default('Unknown') }}</td>
+                <td>{{ class.bed_type|default('Unknown') }}</td>
+                <td>{{ class.width|default('Unknown') }}"</td>
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+        {% endif%}
+
+    </div>
+    {% endif %}
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script>
+</body>

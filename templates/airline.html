@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Airline</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/main.css"/>
+    <link rel="icon" href="img/favicon.png" type="image/png"/>
+</head>
+<body>
+<div class="container">
+    {{ include('header.html') }}
+
+    {% if airline is not defined %}
+
+    <!-- Airline is not defined -->
+    <div class="main col-lg-3 centered">
+        <form action="" method="GET" class="col-lg-10 offset-lg-1">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <label for="airline" class="input-group-text">Airline ICAO:</label>
+                </div>
+                <input class="form-control" type="text" name="icao" id="airline" placeholder="SAS" minlength="3" maxlength="3" required>
+            </div>
+
+            <input type="submit" value="Search" class="btn btn-success col-md-3" style="margin-top: 10px">
+
+        </form>
+    </div>
+
+    {% else %}
+
+    <!-- Airline is defined -->
+    <div>
+        <h1 id="headline" class="display-4">{{airline.name}}</h1>
+        <h3 class="display-5"><i><a href="https://{{airline.url}}/">{{airline.url}}</a></i></h3>
+    </div>
+    <div class="main shadow">
+        <div class="row">
+            <div class="col-sm"><b>IATA code:</b> <a href="airline.php?iata={{airline.iata}}">{{airline.iata}}</a></div>
+            <div class="col-sm"><b>ICAO code:</b> <a href="airline.php?icao={{airline.icao}}">{{airline.icao}}</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm"><b>Twitter:</b> <a
+                    href="https://twitter.com/{{airline.twitter}}">@{{airline.twitter}}</a></div>
+            <div class="col-sm"><b>Facebook:</b> <a href="https://facebook.com/{{airline.facebook}}">@{{airline.facebook}}</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm"><b>Fleet size:</b> {{airline.fleet.size}} aircrafts</div>
+            <div class="col-sm"><b>Average fleet age:</b> {{airline.fleet.age}} years</div>
+        </div>
+
+    </div>
+    {% endif %}
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script>
+</body>
